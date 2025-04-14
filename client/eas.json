@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 16.3.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "preview1": {
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY": "pk_test_51PNX6oLNZ7xJ7o3igEOQk2WRlGmy0MqHcPPJ8IwVk6JL0XrSswQkpLy2okiGPJwPo8wHKIw5Q0GuKRJddQNdrEQ000wSZ9hJMU"
+      }
+    },
+    "preview2": {
+      "android": {
+        "gradleCommand": ":app:assembleRelease"
+      }
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
