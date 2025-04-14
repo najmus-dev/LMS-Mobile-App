@@ -26,8 +26,8 @@ export const accessTokenOptions: ITokenOptions = {
   expires: new Date(Date.now() + accessTokenExpire * 60  * 60 * 1000),
   maxAge: accessTokenExpire * 60 * 60 * 1000,
   httpOnly: true,
-  // sameSite: "lax",
-  sameSite: "none",
+  sameSite: "lax",
+  // sameSite: "none",
   secure:true,
 };
 
@@ -35,15 +35,15 @@ export const refreshTokenOptions: ITokenOptions = {
   expires: new Date(Date.now() + refreshTokenExpire * 24 * 60 * 60 * 1000),
   maxAge: refreshTokenExpire * 24 * 60 * 60 * 1000,
   httpOnly: true,
-  // sameSite: "lax",
-  sameSite: "none",
+  sameSite: "lax",
+  // sameSite: "none",
   secure: true,
 };
 
 export const sendToken = (user: IUser, statusCode: number, res: Response) => {
   const accessToken = user.SignAccessToken();
   const refreshToken = user.SignRefreshToken();
-  console.log("Refresh Token:", refreshToken);
+
   // upload session to redis
 //   redis.set(user._id, JSON.stringify(user) as any,);
 redis.set(user._id.toString(), JSON.stringify(user));
@@ -54,6 +54,6 @@ redis.set(user._id.toString(), JSON.stringify(user));
     success: true,
     user,
     accessToken,
-    refreshToken: refreshToken || "not generated",
+    refreshToken,
   });
 };
